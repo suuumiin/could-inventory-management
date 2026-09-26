@@ -3,153 +3,118 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Cloud Inventory | Dashboard</title>
+    <title>Cloud Inventory Management</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-
 <body>
 
-    <!-- =========================================
-         SIDEBAR
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
 
     <aside class="sidebar">
 
-        <div class="brand">
+        <div class="sidebar-logo">
+            <div class="logo-icon">☁</div>
 
-            <div class="brand-icon">
-                CI
+            <div>
+                <h2>CloudStock</h2>
+                <span>Inventory System</span>
             </div>
-
-            <div class="brand-text">
-                <h2>Cloud Inventory</h2>
-                <span>Management System</span>
-            </div>
-
         </div>
 
 
         <nav class="sidebar-nav">
 
-            <p class="nav-title">
-                MAIN MENU
-            </p>
-
-
-            <a href="/"
+            <!-- Dashboard -->
+            <a href="#dashboardSection"
                class="nav-item active">
 
                 <span class="nav-icon">▦</span>
 
-                <span>
-                    Dashboard
-                </span>
+                <span>Dashboard</span>
 
             </a>
 
 
-            <a href="/"
-               class="nav-item">
-
-                <span class="nav-icon">▤</span>
-
-                <span>
-                    Inventory
-                </span>
-
-            </a>
-
-
-            <a href="/billing"
+            <!-- Inventory -->
+            <a href="#inventorySection"
                class="nav-item">
 
                 <span class="nav-icon">▣</span>
 
-                <span>
-                    Billing & Invoices
-                </span>
+                <span>Inventory</span>
 
             </a>
 
 
-            <p class="nav-title nav-title-space">
-                SYSTEM
-            </p>
+            <!-- Billing -->
+            <a href="/billing"
+               class="nav-item">
 
+                <span class="nav-icon">▤</span>
 
-            <div class="nav-info">
+                <span>Billing</span>
 
-                <span class="cloud-dot"></span>
-
-                <div>
-
-                    <strong>
-                        Cloud Connected
-                    </strong>
-
-                    <small>
-                        AWS Services Active
-                    </small>
-
-                </div>
-
-            </div>
+            </a>
 
         </nav>
 
 
-        <div class="sidebar-footer">
+        <div class="sidebar-bottom">
 
-            <div class="aws-badge">
-                ☁ AWS
+            <div class="cloud-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Cloud Connected</strong>
+                    <small>AWS services active</small>
+                </div>
+
             </div>
-
-            <p>
-                Serverless Inventory
-            </p>
 
         </div>
 
     </aside>
 
 
-    <!-- =========================================
-         MAIN AREA
-    ========================================== -->
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
 
     <main class="main-content">
 
 
-        <!-- TOP BAR -->
+        <!-- ============================= -->
+        <!-- TOP HEADER -->
+        <!-- ============================= -->
 
-        <header class="topbar">
+        <header class="top-header">
 
             <div>
 
-                <p class="breadcrumb">
-                    Dashboard
-                </p>
+                <h1>Inventory Dashboard</h1>
 
-                <h1>
-                    Inventory Dashboard
-                </h1>
+                <p>
+                    Manage your products and monitor stock levels
+                </p>
 
             </div>
 
 
             <a href="/billing"
-               class="topbar-billing">
+               class="header-billing-btn">
 
-                <span>▣</span>
+                <span>▤</span>
 
-                Create Invoice
+                Open Billing
 
             </a>
 
@@ -157,135 +122,116 @@
 
 
 
-        <!-- =====================================
-             DASHBOARD CARDS
-        ====================================== -->
+        <!-- ============================= -->
+        <!-- DASHBOARD SECTION -->
+        <!-- ============================= -->
 
-        <section class="dashboard">
+        <section id="dashboardSection"
+                 class="dashboard-section">
 
 
-            <!-- TOTAL PRODUCTS -->
+            <!-- ============================= -->
+            <!-- STATISTICS -->
+            <!-- ============================= -->
 
-            <div class="dashboard-card">
+            <div class="stats-grid">
 
-                <div class="card-top">
 
-                    <div class="stat-icon blue">
-                        ▦
+                <!-- Total Products -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon products-icon">
+                        ▣
                     </div>
 
-                    <span class="stat-label">
-                        PRODUCTS
-                    </span>
+                    <div class="stat-info">
 
-                </div>
+                        <span>Total Products</span>
 
-                <div class="stat-number"
-                     id="totalProducts">
-                    0
-                </div>
+                        <strong id="totalProducts">
+                            0
+                        </strong>
 
-                <div class="stat-description">
-                    Total products in inventory
-                </div>
-
-            </div>
-
-
-            <!-- TOTAL ITEMS -->
-
-            <div class="dashboard-card">
-
-                <div class="card-top">
-
-                    <div class="stat-icon purple">
-                        ◈
                     </div>
 
-                    <span class="stat-label">
-                        STOCK UNITS
-                    </span>
+                </div>
+
+
+
+                <!-- Total Items -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon items-icon">
+                        ◫
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Total Items</span>
+
+                        <strong id="totalItems">
+                            0
+                        </strong>
+
+                    </div>
 
                 </div>
 
-                <div class="stat-number"
-                     id="totalItems">
-                    0
-                </div>
-
-                <div class="stat-description">
-                    Total available units
-                </div>
-
-            </div>
 
 
-            <!-- LOW STOCK -->
+                <!-- Low Stock -->
 
-            <div class="dashboard-card">
+                <div class="stat-card">
 
-                <div class="card-top">
-
-                    <div class="stat-icon orange">
+                    <div class="stat-icon warning-icon">
                         !
                     </div>
 
-                    <span class="stat-label">
-                        LOW STOCK
-                    </span>
+                    <div class="stat-info">
+
+                        <span>Low Stock</span>
+
+                        <strong id="lowStock">
+                            0
+                        </strong>
+
+                    </div>
 
                 </div>
 
-                <div class="stat-number warning-number"
-                     id="lowStock">
-                    0
-                </div>
-
-                <div class="stat-description">
-                    Products requiring attention
-                </div>
 
             </div>
 
 
-        </section>
 
+            <!-- ============================= -->
+            <!-- ADD PRODUCT SECTION -->
+            <!-- ============================= -->
 
+            <section class="form-card">
 
-        <!-- =========================================
-             ADD PRODUCT
-        ========================================== -->
+                <div class="section-heading">
 
-        <section class="content-card">
+                    <div>
 
-            <div class="content-card-header">
+                        <h2>Add New Product</h2>
 
-                <div>
+                        <p>
+                            Add a product to your cloud inventory
+                        </p>
 
-                    <span class="section-label">
-                        INVENTORY MANAGEMENT
-                    </span>
-
-                    <h2>
-                        Add New Product
-                    </h2>
-
-                    <p>
-                        Register a new product in your cloud inventory.
-                    </p>
+                    </div>
 
                 </div>
 
-            </div>
+
+                <form id="productForm"
+                      class="product-form">
 
 
-            <form id="productForm">
-
-
-                <div class="form-grid">
-
-
-                    <!-- PRODUCT ID -->
+                    <!-- Product ID -->
 
                     <div class="form-group">
 
@@ -302,7 +248,7 @@
                             <input
                                 type="text"
                                 id="productId"
-                                placeholder="P001"
+                                placeholder="e.g. P001"
                                 required
                             >
 
@@ -311,7 +257,8 @@
                     </div>
 
 
-                    <!-- PRODUCT NAME -->
+
+                    <!-- Product Name -->
 
                     <div class="form-group">
 
@@ -322,13 +269,13 @@
                         <div class="input-wrapper">
 
                             <span class="input-icon">
-                                ▦
+                                ▣
                             </span>
 
                             <input
                                 type="text"
                                 id="productName"
-                                placeholder="Product name"
+                                placeholder="e.g. Laptop"
                                 required
                             >
 
@@ -337,7 +284,8 @@
                     </div>
 
 
-                    <!-- CATEGORY -->
+
+                    <!-- Category -->
 
                     <div class="form-group">
 
@@ -354,7 +302,7 @@
                             <input
                                 type="text"
                                 id="category"
-                                placeholder="Category"
+                                placeholder="e.g. Electronics"
                                 required
                             >
 
@@ -363,12 +311,13 @@
                     </div>
 
 
-                    <!-- PRICE -->
+
+                    <!-- Price -->
 
                     <div class="form-group">
 
                         <label for="price">
-                            Unit Price
+                            Price (₹)
                         </label>
 
                         <div class="input-wrapper">
@@ -391,18 +340,19 @@
                     </div>
 
 
-                    <!-- QUANTITY -->
+
+                    <!-- Quantity -->
 
                     <div class="form-group">
 
                         <label for="quantity">
-                            Initial Quantity
+                            Quantity
                         </label>
 
                         <div class="input-wrapper">
 
                             <span class="input-icon">
-                                ≡
+                                #
                             </span>
 
                             <input
@@ -418,18 +368,19 @@
                     </div>
 
 
-                    <!-- MINIMUM STOCK -->
+
+                    <!-- Minimum Stock -->
 
                     <div class="form-group">
 
                         <label for="minimumStock">
-                            Minimum Stock Level
+                            Minimum Stock
                         </label>
 
                         <div class="input-wrapper">
 
                             <span class="input-icon">
-                                ⚑
+                                ⚠
                             </span>
 
                             <input
@@ -445,269 +396,143 @@
                     </div>
 
 
-                </div>
 
+                    <!-- Submit -->
 
-                <div class="form-footer">
+                    <div class="form-submit">
 
-                    <span class="form-note">
-                        All fields are required
-                    </span>
+                        <button
+                            type="submit"
+                            class="primary-btn">
 
+                            <span>＋</span>
 
-                    <button
-                        type="submit"
-                        class="btn btn-primary">
+                            Add Product
 
-                        <span>+</span>
+                        </button>
 
-                        Add Product
-
-                    </button>
-
-                </div>
-
-
-            </form>
-
-        </section>
-
-
-
-        <!-- =========================================
-             INVENTORY TABLE
-        ========================================== -->
-
-        <section class="content-card inventory-card">
-
-
-            <div class="inventory-header">
-
-
-                <div>
-
-                    <span class="section-label">
-                        PRODUCT CATALOG
-                    </span>
-
-                    <h2>
-                        Inventory
-                    </h2>
-
-                    <p>
-                        Monitor and manage all products.
-                    </p>
-
-                </div>
-
-
-                <div class="search-container">
-
-                    <span class="search-icon">
-                        ⌕
-                    </span>
-
-                    <input
-                        type="text"
-                        id="searchInput"
-                        placeholder="Search products..."
-                    >
-
-                </div>
-
-
-            </div>
-
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Product
-                            </th>
-
-                            <th>
-                                Name
-                            </th>
-
-                            <th>
-                                Category
-                            </th>
-
-                            <th>
-                                Price
-                            </th>
-
-                            <th>
-                                Quantity
-                            </th>
-
-                            <th>
-                                Min. Stock
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Actions
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="inventoryTableBody">
-
-                        <tr>
-
-                            <td
-                                colspan="8"
-                                class="empty-message">
-
-                                Loading inventory...
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =========================================
-             CLOUD ARCHITECTURE
-        ========================================== -->
-
-        <section class="architecture-card">
-
-            <div class="architecture-header">
-
-                <div>
-
-                    <span class="section-label">
-                        CLOUD INFRASTRUCTURE
-                    </span>
-
-                    <h2>
-                        Serverless Architecture
-                    </h2>
-
-                    <p>
-                        Your inventory application is powered by AWS cloud services.
-                    </p>
-
-                </div>
-
-                <div class="cloud-status">
-                    <span></span>
-                    Connected
-                </div>
-
-            </div>
-
-
-            <div class="architecture-flow">
-
-
-                <div class="architecture-box">
-
-                    <div class="architecture-icon">
-                        ◉
                     </div>
 
-                    <strong>
-                        Web Application
-                    </strong>
 
-                    <small>
-                        HTML · CSS · JavaScript
-                    </small>
+                </form>
 
-                </div>
+            </section>
 
 
-                <div class="flow-arrow">
-                    →
-                </div>
+
+            <!-- ============================= -->
+            <!-- INVENTORY SECTION -->
+            <!-- ============================= -->
+
+            <section id="inventorySection"
+                     class="inventory-section">
 
 
-                <div class="architecture-box">
+                <div class="section-heading">
 
-                    <div class="architecture-icon">
-                        ⇄
+                    <div>
+
+                        <h2>Inventory</h2>
+
+                        <p>
+                            View and manage all products
+                        </p>
+
                     </div>
 
-                    <strong>
-                        API Gateway
-                    </strong>
 
-                    <small>
-                        HTTP API
-                    </small>
+                    <!-- Search -->
 
-                </div>
+                    <div class="search-box">
 
+                        <span>
+                            🔍
+                        </span>
 
-                <div class="flow-arrow">
-                    →
-                </div>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search products..."
+                        >
 
-
-                <div class="architecture-box">
-
-                    <div class="architecture-icon">
-                        λ
                     </div>
 
-                    <strong>
-                        AWS Lambda
-                    </strong>
+                </div>
 
-                    <small>
-                        Python Backend
-                    </small>
+
+
+                <!-- ============================= -->
+                <!-- INVENTORY TABLE -->
+                <!-- ============================= -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Product ID
+                                </th>
+
+                                <th>
+                                    Product Name
+                                </th>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Price
+                                </th>
+
+                                <th>
+                                    Quantity
+                                </th>
+
+                                <th>
+                                    Min. Stock
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="inventoryTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="empty-message">
+
+                                    Loading inventory...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 
 
-                <div class="flow-arrow">
-                    →
-                </div>
+            </section>
 
-
-                <div class="architecture-box">
-
-                    <div class="architecture-icon">
-                        ◈
-                    </div>
-
-                    <strong>
-                        DynamoDB
-                    </strong>
-
-                    <small>
-                        Cloud Database
-                    </small>
-
-                </div>
-
-
-            </div>
 
         </section>
 
@@ -716,13 +541,12 @@
 
 
 
-    <!-- =========================================
-         EDIT PRODUCT MODAL
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- EDIT PRODUCT MODAL -->
+    <!-- ============================= -->
 
-    <div
-        id="editModal"
-        class="modal">
+    <div id="editModal"
+         class="modal">
 
 
         <div class="modal-content">
@@ -732,23 +556,16 @@
 
                 <div>
 
-                    <span class="section-label">
-                        INVENTORY
-                    </span>
-
-                    <h2>
-                        Edit Product
-                    </h2>
+                    <h2>Edit Product</h2>
 
                     <p>
-                        Update product information.
+                        Update product information
                     </p>
 
                 </div>
 
 
                 <button
-                    type="button"
                     id="closeEditModal"
                     class="modal-close">
 
@@ -759,8 +576,11 @@
             </div>
 
 
+
             <form id="editProductForm">
 
+
+                <!-- Product ID -->
 
                 <div class="form-group">
 
@@ -777,6 +597,9 @@
                 </div>
 
 
+
+                <!-- Product Name -->
+
                 <div class="form-group">
 
                     <label for="editProductName">
@@ -791,6 +614,9 @@
 
                 </div>
 
+
+
+                <!-- Category -->
 
                 <div class="form-group">
 
@@ -807,42 +633,47 @@
                 </div>
 
 
-                <div class="modal-two-column">
 
-                    <div class="form-group">
+                <!-- Price -->
 
-                        <label for="editPrice">
-                            Price (₹)
-                        </label>
+                <div class="form-group">
 
-                        <input
-                            type="number"
-                            id="editPrice"
-                            min="0"
-                            step="0.01"
-                            required
-                        >
+                    <label for="editPrice">
+                        Price (₹)
+                    </label>
 
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="editQuantity">
-                            Quantity
-                        </label>
-
-                        <input
-                            type="number"
-                            id="editQuantity"
-                            min="0"
-                            required
-                        >
-
-                    </div>
+                    <input
+                        type="number"
+                        id="editPrice"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
 
                 </div>
 
+
+
+                <!-- Quantity -->
+
+                <div class="form-group">
+
+                    <label for="editQuantity">
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="editQuantity"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Minimum Stock -->
 
                 <div class="form-group">
 
@@ -860,12 +691,15 @@
                 </div>
 
 
+
+                <!-- Modal Buttons -->
+
                 <div class="modal-actions">
 
                     <button
                         type="button"
                         id="cancelEdit"
-                        class="btn btn-secondary">
+                        class="secondary-btn">
 
                         Cancel
 
@@ -874,7 +708,7 @@
 
                     <button
                         type="submit"
-                        class="btn btn-primary">
+                        class="primary-btn">
 
                         Save Changes
 
@@ -891,9 +725,14 @@
 
 
 
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
     <script
         src="{{ url_for('static', filename='js/app.js') }}">
     </script>
+
 
 </body>
 
