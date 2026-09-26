@@ -2,160 +2,387 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Billing - Cloud Inventory Management</title>
+    <title>Cloud Inventory | Billing</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/billing.css') }}">
+
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
 
-        <div class="header-content">
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
 
-            <div>
-                <h1>🧾 Billing System</h1>
+    <aside class="sidebar">
 
-                <p>
-                    Create bills using products available in inventory
-                </p>
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                CI
             </div>
 
-            <a href="/" class="inventory-link">
-                📦 Inventory
-            </a>
+            <div class="brand-text">
+
+                <h2>
+                    Cloud Inventory
+                </h2>
+
+                <span>
+                    Management System
+                </span>
+
+            </div>
 
         </div>
 
-    </header>
+
+        <nav class="sidebar-nav">
 
 
-    <main class="container">
-
-        <!-- BILLING SECTION -->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                <div>
-                    <h2>Create New Bill</h2>
-
-                    <p>
-                        Add products and quantities to the bill
-                    </p>
-                </div>
-
-            </div>
+            <p class="nav-title">
+                MAIN MENU
+            </p>
 
 
-            <!-- PRODUCT INPUT -->
+            <a href="/"
+               class="nav-item">
 
-            <div class="product-input">
+                <span class="nav-icon">
+                    ▦
+                </span>
 
-                <div class="form-group">
+                <span>
+                    Dashboard
+                </span>
 
-                    <label for="productId">
-                        Product ID
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productId"
-                        placeholder="Example: P001"
-                    >
-
-                </div>
+            </a>
 
 
-                <div class="form-group">
+            <a href="/"
+               class="nav-item">
 
-                    <label for="quantity">
-                        Quantity
-                    </label>
+                <span class="nav-icon">
+                    ▤
+                </span>
 
-                    <input
-                        type="number"
-                        id="quantity"
-                        min="1"
-                        placeholder="Enter quantity"
-                    >
+                <span>
+                    Inventory
+                </span>
 
-                </div>
+            </a>
 
 
-                <button
-                    class="btn btn-primary"
-                    id="addItemButton">
+            <a href="/billing"
+               class="nav-item active">
 
-                    + Add Item
+                <span class="nav-icon">
+                    ▣
+                </span>
 
-                </button>
+                <span>
+                    Billing & Invoices
+                </span>
 
-            </div>
-
-
-            <!-- BILL TABLE -->
-
-            <div class="bill-table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Product ID</th>
-
-                            <th>Product Name</th>
-
-                            <th>Price</th>
-
-                            <th>Quantity</th>
-
-                            <th>Total</th>
-
-                            <th>Action</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="billTableBody">
-
-                        <tr>
-
-                            <td
-                                colspan="6"
-                                class="empty-message">
-
-                                No products added to the bill.
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
+            </a>
 
 
-            <!-- TOTAL -->
+            <p class="nav-title nav-title-space">
+                SYSTEM
+            </p>
 
-            <div class="bill-summary">
+
+            <div class="nav-info">
+
+                <span class="cloud-dot"></span>
 
                 <div>
 
-                    <span>Total Items</span>
+                    <strong>
+                        Cloud Connected
+                    </strong>
+
+                    <small>
+                        AWS Services Active
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="aws-badge">
+                ☁ AWS
+            </div>
+
+            <p>
+                Serverless Inventory
+            </p>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="breadcrumb">
+                    Billing &nbsp;/&nbsp; New Invoice
+                </p>
+
+                <h1>
+                    Create Invoice
+                </h1>
+
+            </div>
+
+
+            <a href="/"
+               class="back-button">
+
+                ← Inventory
+
+            </a>
+
+        </header>
+
+
+
+        <!-- =========================================
+             BILLING AREA
+        ========================================== -->
+
+        <div class="billing-layout">
+
+
+            <!-- =====================================
+                 LEFT SIDE
+            ====================================== -->
+
+            <section class="billing-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            SALES
+                        </span>
+
+                        <h2>
+                            Add Products
+                        </h2>
+
+                        <p>
+                            Select products from your inventory.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PRODUCT INPUT -->
+
+                <div class="product-input">
+
+
+                    <div class="form-group">
+
+                        <label for="productId">
+                            Product ID
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span>
+                                #
+                            </span>
+
+                            <input
+                                type="text"
+                                id="productId"
+                                placeholder="P001"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="quantity">
+                            Quantity
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span>
+                                ≡
+                            </span>
+
+                            <input
+                                type="number"
+                                id="quantity"
+                                min="1"
+                                placeholder="1"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="add-item-button"
+                        id="addItemButton">
+
+                        <span>+</span>
+
+                        Add Item
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- BILL TABLE -->
+
+                <div class="bill-table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Product ID
+                                </th>
+
+                                <th>
+                                    Product
+                                </th>
+
+                                <th>
+                                    Unit Price
+                                </th>
+
+                                <th>
+                                    Qty
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="billTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="empty-message">
+
+                                    <div class="empty-icon">
+                                        ▣
+                                    </div>
+
+                                    <strong>
+                                        No products added
+                                    </strong>
+
+                                    <span>
+                                        Add products using the fields above.
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================
+                 RIGHT SIDE - BILL SUMMARY
+            ====================================== -->
+
+            <aside class="summary-card">
+
+
+                <div class="summary-header">
+
+                    <span class="section-label">
+                        INVOICE SUMMARY
+                    </span>
+
+                    <h2>
+                        Current Bill
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-icon">
+                    ₹
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Total Items
+                    </span>
 
                     <strong id="totalItems">
                         0
@@ -164,9 +391,14 @@
                 </div>
 
 
+                <div class="summary-divider"></div>
+
+
                 <div class="grand-total">
 
-                    <span>Grand Total</span>
+                    <span>
+                        Grand Total
+                    </span>
 
                     <strong>
                         ₹<span id="grandTotal">0.00</span>
@@ -174,105 +406,159 @@
 
                 </div>
 
-            </div>
+
+                <div class="summary-note">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    Inventory will be updated automatically after invoice generation.
+
+                </div>
 
 
-            <!-- ACTIONS -->
+                <div class="summary-actions">
 
-            <div class="bill-actions">
+                    <button
+                        class="clear-button"
+                        id="clearBillButton">
 
-                <button
-                    class="btn btn-secondary"
-                    id="clearBillButton">
+                        Clear Bill
 
-                    Clear Bill
-
-                </button>
+                    </button>
 
 
-                <button
-                    class="btn btn-success"
-                    id="generateBillButton">
+                    <button
+                        class="generate-button"
+                        id="generateBillButton">
 
-                    🧾 Generate Bill
+                        <span>
+                            ▣
+                        </span>
 
-                </button>
+                        Generate Invoice
 
-            </div>
+                    </button>
 
-        </section>
+                </div>
 
 
-        <!-- GENERATED BILL -->
+            </aside>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             GENERATED RECEIPT
+        ========================================== -->
 
         <section
-            class="card receipt-card"
+            class="receipt-section"
             id="receiptSection"
             style="display: none;">
 
-            <div id="receipt">
 
-                <div class="receipt-header">
+            <div class="receipt">
 
-                    <h2>
+
+                <div class="receipt-top">
+
+                    <div>
+
+                        <span class="section-label">
+                            COMPLETED TRANSACTION
+                        </span>
+
+                        <h2>
+                            Sales Invoice
+                        </h2>
+
+                    </div>
+
+
+                    <div class="receipt-brand">
                         CLOUD INVENTORY
-                    </h2>
-
-                    <p>
-                        Inventory Management System
-                    </p>
-
-                    <hr>
-
-                    <h3>
-                        SALES BILL
-                    </h3>
+                    </div>
 
                 </div>
 
 
-                <div class="receipt-info">
+                <div class="receipt-meta">
 
-                    <p>
-                        <strong>Bill ID:</strong>
-                        <span id="receiptBillId"></span>
-                    </p>
+                    <div>
 
-                    <p>
-                        <strong>Date:</strong>
-                        <span id="receiptDate"></span>
-                    </p>
+                        <span>
+                            INVOICE NUMBER
+                        </span>
+
+                        <strong id="receiptBillId">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            DATE
+                        </span>
+
+                        <strong id="receiptDate">
+                            -
+                        </strong>
+
+                    </div>
 
                 </div>
 
 
-                <table class="receipt-table">
+                <div class="receipt-table-wrapper">
 
-                    <thead>
+                    <table class="receipt-table">
 
-                        <tr>
+                        <thead>
 
-                            <th>Product</th>
-                            <th>Qty</th>
-                            <th>Price</th>
-                            <th>Total</th>
+                            <tr>
 
-                        </tr>
+                                <th>
+                                    Product
+                                </th>
 
-                    </thead>
+                                <th>
+                                    Qty
+                                </th>
 
-                    <tbody id="receiptTableBody">
+                                <th>
+                                    Price
+                                </th>
 
-                    </tbody>
+                                <th>
+                                    Total
+                                </th>
 
-                </table>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="receiptTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
 
 
                 <div class="receipt-total">
 
-                    <strong>
-                        Grand Total:
-                    </strong>
+                    <span>
+                        Total Amount
+                    </span>
 
                     <strong>
                         ₹<span id="receiptTotal">
@@ -285,11 +571,16 @@
 
                 <div class="thank-you">
 
-                    <p>
-                        Thank you for your purchase!
-                    </p>
+                    <strong>
+                        Thank you for your business.
+                    </strong>
+
+                    <span>
+                        Inventory quantities have been updated successfully.
+                    </span>
 
                 </div>
+
 
             </div>
 
@@ -297,23 +588,27 @@
             <div class="print-area">
 
                 <button
-                    class="btn btn-primary"
+                    class="print-button"
                     onclick="window.print()">
 
-                    🖨️ Print Bill
+                    🖨 Print Invoice
 
                 </button>
 
             </div>
 
+
         </section>
 
+
     </main>
+
 
 
     <script
         src="{{ url_for('static', filename='js/billing.js') }}">
     </script>
+
 
 </body>
 

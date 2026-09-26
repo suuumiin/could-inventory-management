@@ -2,70 +2,163 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Cloud Inventory Management System</title>
+    <title>Cloud Inventory | Dashboard</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 
 
 <body>
 
-
     <!-- =========================================
-         HEADER
+         SIDEBAR
     ========================================== -->
 
-    <header class="header">
+    <aside class="sidebar">
 
-        <div class="header-content">
+        <div class="brand">
 
-            <!-- TITLE -->
+            <div class="brand-icon">
+                CI
+            </div>
 
-            <div class="header-text">
+            <div class="brand-text">
+                <h2>Cloud Inventory</h2>
+                <span>Management System</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+
+            <a href="/"
+               class="nav-item active">
+
+                <span class="nav-icon">▦</span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="/"
+               class="nav-item">
+
+                <span class="nav-icon">▤</span>
+
+                <span>
+                    Inventory
+                </span>
+
+            </a>
+
+
+            <a href="/billing"
+               class="nav-item">
+
+                <span class="nav-icon">▣</span>
+
+                <span>
+                    Billing & Invoices
+                </span>
+
+            </a>
+
+
+            <p class="nav-title nav-title-space">
+                SYSTEM
+            </p>
+
+
+            <div class="nav-info">
+
+                <span class="cloud-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Cloud Connected
+                    </strong>
+
+                    <small>
+                        AWS Services Active
+                    </small>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="aws-badge">
+                ☁ AWS
+            </div>
+
+            <p>
+                Serverless Inventory
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN AREA
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="breadcrumb">
+                    Dashboard
+                </p>
 
                 <h1>
-                    Cloud Inventory Management System
+                    Inventory Dashboard
                 </h1>
-
-                <p>
-                    Manage your inventory using AWS Cloud Services
-                </p>
 
             </div>
 
 
-            <!-- BILLING BUTTON -->
-
             <a href="/billing"
-               class="billing-link">
+               class="topbar-billing">
 
-                🧾 Billing
+                <span>▣</span>
+
+                Create Invoice
 
             </a>
 
-        </div>
+        </header>
 
-    </header>
-
-
-
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================== -->
-
-    <main class="container">
 
 
         <!-- =====================================
-             DASHBOARD
+             DASHBOARD CARDS
         ====================================== -->
 
         <section class="dashboard">
@@ -75,20 +168,25 @@
 
             <div class="dashboard-card">
 
-                <div class="dashboard-icon">
-                    📦
+                <div class="card-top">
+
+                    <div class="stat-icon blue">
+                        ▦
+                    </div>
+
+                    <span class="stat-label">
+                        PRODUCTS
+                    </span>
+
                 </div>
 
-                <div>
+                <div class="stat-number"
+                     id="totalProducts">
+                    0
+                </div>
 
-                    <h3>
-                        Total Products
-                    </h3>
-
-                    <p id="totalProducts">
-                        0
-                    </p>
-
+                <div class="stat-description">
+                    Total products in inventory
                 </div>
 
             </div>
@@ -98,20 +196,25 @@
 
             <div class="dashboard-card">
 
-                <div class="dashboard-icon">
-                    📊
+                <div class="card-top">
+
+                    <div class="stat-icon purple">
+                        ◈
+                    </div>
+
+                    <span class="stat-label">
+                        STOCK UNITS
+                    </span>
+
                 </div>
 
-                <div>
+                <div class="stat-number"
+                     id="totalItems">
+                    0
+                </div>
 
-                    <h3>
-                        Total Items
-                    </h3>
-
-                    <p id="totalItems">
-                        0
-                    </p>
-
+                <div class="stat-description">
+                    Total available units
                 </div>
 
             </div>
@@ -121,20 +224,25 @@
 
             <div class="dashboard-card">
 
-                <div class="dashboard-icon">
-                    ⚠️
+                <div class="card-top">
+
+                    <div class="stat-icon orange">
+                        !
+                    </div>
+
+                    <span class="stat-label">
+                        LOW STOCK
+                    </span>
+
                 </div>
 
-                <div>
+                <div class="stat-number warning-number"
+                     id="lowStock">
+                    0
+                </div>
 
-                    <h3>
-                        Low Stock
-                    </h3>
-
-                    <p id="lowStock">
-                        0
-                    </p>
-
+                <div class="stat-description">
+                    Products requiring attention
                 </div>
 
             </div>
@@ -145,22 +253,25 @@
 
 
         <!-- =========================================
-             ADD PRODUCT SECTION
+             ADD PRODUCT
         ========================================== -->
 
-        <section class="section-card">
+        <section class="content-card">
 
-
-            <div class="section-header">
+            <div class="content-card-header">
 
                 <div>
+
+                    <span class="section-label">
+                        INVENTORY MANAGEMENT
+                    </span>
 
                     <h2>
                         Add New Product
                     </h2>
 
                     <p>
-                        Add a new product to your inventory
+                        Register a new product in your cloud inventory.
                     </p>
 
                 </div>
@@ -168,14 +279,13 @@
             </div>
 
 
-
             <form id="productForm">
 
 
-                <!-- PRODUCT ID -->
+                <div class="form-grid">
 
-                <div class="form-row">
 
+                    <!-- PRODUCT ID -->
 
                     <div class="form-group">
 
@@ -183,12 +293,20 @@
                             Product ID
                         </label>
 
-                        <input
-                            type="text"
-                            id="productId"
-                            placeholder="Example: P001"
-                            required
-                        >
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                #
+                            </span>
+
+                            <input
+                                type="text"
+                                id="productId"
+                                placeholder="P001"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
@@ -201,21 +319,22 @@
                             Product Name
                         </label>
 
-                        <input
-                            type="text"
-                            id="productName"
-                            placeholder="Example: Notebook"
-                            required
-                        >
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ▦
+                            </span>
+
+                            <input
+                                type="text"
+                                id="productName"
+                                placeholder="Product name"
+                                required
+                            >
+
+                        </div>
 
                     </div>
-
-
-                </div>
-
-
-
-                <div class="form-row">
 
 
                     <!-- CATEGORY -->
@@ -226,12 +345,20 @@
                             Category
                         </label>
 
-                        <input
-                            type="text"
-                            id="category"
-                            placeholder="Example: Stationery"
-                            required
-                        >
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ◫
+                            </span>
+
+                            <input
+                                type="text"
+                                id="category"
+                                placeholder="Category"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
@@ -241,26 +368,27 @@
                     <div class="form-group">
 
                         <label for="price">
-                            Price (₹)
+                            Unit Price
                         </label>
 
-                        <input
-                            type="number"
-                            id="price"
-                            placeholder="Example: 50"
-                            min="0"
-                            step="0.01"
-                            required
-                        >
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ₹
+                            </span>
+
+                            <input
+                                type="number"
+                                id="price"
+                                placeholder="0.00"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
 
                     </div>
-
-
-                </div>
-
-
-
-                <div class="form-row">
 
 
                     <!-- QUANTITY -->
@@ -268,16 +396,24 @@
                     <div class="form-group">
 
                         <label for="quantity">
-                            Quantity
+                            Initial Quantity
                         </label>
 
-                        <input
-                            type="number"
-                            id="quantity"
-                            placeholder="Example: 20"
-                            min="0"
-                            required
-                        >
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ≡
+                            </span>
+
+                            <input
+                                type="number"
+                                id="quantity"
+                                placeholder="0"
+                                min="0"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
@@ -287,16 +423,24 @@
                     <div class="form-group">
 
                         <label for="minimumStock">
-                            Minimum Stock
+                            Minimum Stock Level
                         </label>
 
-                        <input
-                            type="number"
-                            id="minimumStock"
-                            placeholder="Example: 10"
-                            min="0"
-                            required
-                        >
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ⚑
+                            </span>
+
+                            <input
+                                type="number"
+                                id="minimumStock"
+                                placeholder="10"
+                                min="0"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
@@ -304,16 +448,20 @@
                 </div>
 
 
+                <div class="form-footer">
 
-                <!-- SUBMIT -->
+                    <span class="form-note">
+                        All fields are required
+                    </span>
 
-                <div class="form-actions">
 
                     <button
                         type="submit"
                         class="btn btn-primary">
 
-                        + Add Product
+                        <span>+</span>
+
+                        Add Product
 
                     </button>
 
@@ -327,38 +475,42 @@
 
 
         <!-- =========================================
-             INVENTORY SECTION
+             INVENTORY TABLE
         ========================================== -->
 
-        <section class="section-card">
+        <section class="content-card inventory-card">
 
-
-            <!-- INVENTORY HEADER -->
 
             <div class="inventory-header">
 
 
                 <div>
 
+                    <span class="section-label">
+                        PRODUCT CATALOG
+                    </span>
+
                     <h2>
                         Inventory
                     </h2>
 
                     <p>
-                        View and manage your products
+                        Monitor and manage all products.
                     </p>
 
                 </div>
 
 
-                <!-- SEARCH -->
-
                 <div class="search-container">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
 
                     <input
                         type="text"
                         id="searchInput"
-                        placeholder="🔍 Search products..."
+                        placeholder="Search products..."
                     >
 
                 </div>
@@ -367,24 +519,20 @@
             </div>
 
 
-
-            <!-- INVENTORY TABLE -->
-
             <div class="table-container">
 
                 <table>
-
 
                     <thead>
 
                         <tr>
 
                             <th>
-                                Product ID
+                                Product
                             </th>
 
                             <th>
-                                Product Name
+                                Name
                             </th>
 
                             <th>
@@ -416,7 +564,6 @@
                     </thead>
 
 
-
                     <tbody id="inventoryTableBody">
 
                         <tr>
@@ -433,7 +580,6 @@
 
                     </tbody>
 
-
                 </table>
 
             </div>
@@ -444,94 +590,119 @@
 
 
         <!-- =========================================
-             SYSTEM INFORMATION
+             CLOUD ARCHITECTURE
         ========================================== -->
 
-        <section class="info-section">
+        <section class="architecture-card">
 
+            <div class="architecture-header">
 
-            <div>
+                <div>
 
-                <h2>
-                    ☁️ Cloud Architecture
-                </h2>
+                    <span class="section-label">
+                        CLOUD INFRASTRUCTURE
+                    </span>
 
-                <p>
-                    This inventory management system uses
-                    AWS cloud services to store and manage
-                    inventory data.
-                </p>
+                    <h2>
+                        Serverless Architecture
+                    </h2>
+
+                    <p>
+                        Your inventory application is powered by AWS cloud services.
+                    </p>
+
+                </div>
+
+                <div class="cloud-status">
+                    <span></span>
+                    Connected
+                </div>
 
             </div>
 
 
+            <div class="architecture-flow">
 
-            <div class="architecture">
 
+                <div class="architecture-box">
 
-                <div class="architecture-item">
+                    <div class="architecture-icon">
+                        ◉
+                    </div>
 
                     <strong>
-                        🌐 Web Application
+                        Web Application
                     </strong>
 
-                    <span>
-                        HTML / CSS / JavaScript
-                    </span>
+                    <small>
+                        HTML · CSS · JavaScript
+                    </small>
 
                 </div>
 
 
-                <div class="architecture-arrow">
-                    ↓
+                <div class="flow-arrow">
+                    →
                 </div>
 
 
-                <div class="architecture-item">
+                <div class="architecture-box">
+
+                    <div class="architecture-icon">
+                        ⇄
+                    </div>
 
                     <strong>
-                        🔗 API Gateway
+                        API Gateway
                     </strong>
 
-                    <span>
+                    <small>
                         HTTP API
-                    </span>
+                    </small>
 
                 </div>
 
 
-                <div class="architecture-arrow">
-                    ↓
+                <div class="flow-arrow">
+                    →
                 </div>
 
 
-                <div class="architecture-item">
+                <div class="architecture-box">
+
+                    <div class="architecture-icon">
+                        λ
+                    </div>
 
                     <strong>
-                        ⚡ AWS Lambda
+                        AWS Lambda
                     </strong>
 
-                    <span>
+                    <small>
                         Python Backend
-                    </span>
+                    </small>
 
                 </div>
 
 
-                <div class="architecture-arrow">
-                    ↓
+                <div class="flow-arrow">
+                    →
                 </div>
 
 
-                <div class="architecture-item">
+                <div class="architecture-box">
+
+                    <div class="architecture-icon">
+                        ◈
+                    </div>
 
                     <strong>
-                        🗄️ DynamoDB
+                        DynamoDB
                     </strong>
 
-                    <span>
-                        Inventory Database
-                    </span>
+                    <small>
+                        Cloud Database
+                    </small>
 
                 </div>
 
@@ -557,18 +728,20 @@
         <div class="modal-content">
 
 
-            <!-- MODAL HEADER -->
-
             <div class="modal-header">
 
                 <div>
+
+                    <span class="section-label">
+                        INVENTORY
+                    </span>
 
                     <h2>
                         Edit Product
                     </h2>
 
                     <p>
-                        Update product information
+                        Update product information.
                     </p>
 
                 </div>
@@ -586,13 +759,8 @@
             </div>
 
 
-
-            <!-- EDIT FORM -->
-
             <form id="editProductForm">
 
-
-                <!-- PRODUCT ID -->
 
                 <div class="form-group">
 
@@ -609,9 +777,6 @@
                 </div>
 
 
-
-                <!-- PRODUCT NAME -->
-
                 <div class="form-group">
 
                     <label for="editProductName">
@@ -626,9 +791,6 @@
 
                 </div>
 
-
-
-                <!-- CATEGORY -->
 
                 <div class="form-group">
 
@@ -645,47 +807,42 @@
                 </div>
 
 
+                <div class="modal-two-column">
 
-                <!-- PRICE -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <label for="editPrice">
+                            Price (₹)
+                        </label>
 
-                    <label for="editPrice">
-                        Price (₹)
-                    </label>
+                        <input
+                            type="number"
+                            id="editPrice"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
 
-                    <input
-                        type="number"
-                        id="editPrice"
-                        min="0"
-                        step="0.01"
-                        required
-                    >
-
-                </div>
-
+                    </div>
 
 
-                <!-- QUANTITY -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <label for="editQuantity">
+                            Quantity
+                        </label>
 
-                    <label for="editQuantity">
-                        Quantity
-                    </label>
+                        <input
+                            type="number"
+                            id="editQuantity"
+                            min="0"
+                            required
+                        >
 
-                    <input
-                        type="number"
-                        id="editQuantity"
-                        min="0"
-                        required
-                    >
+                    </div>
 
                 </div>
 
-
-
-                <!-- MINIMUM STOCK -->
 
                 <div class="form-group">
 
@@ -702,9 +859,6 @@
 
                 </div>
 
-
-
-                <!-- MODAL ACTIONS -->
 
                 <div class="modal-actions">
 
@@ -731,21 +885,15 @@
 
             </form>
 
-
         </div>
 
     </div>
 
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
     <script
         src="{{ url_for('static', filename='js/app.js') }}">
     </script>
-
 
 </body>
 
