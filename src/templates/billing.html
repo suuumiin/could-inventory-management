@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Billing - Cloud Inventory Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/billing.css') }}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="header-content">
+
+            <div>
+                <h1>🧾 Billing System</h1>
+
+                <p>
+                    Create bills using products available in inventory
+                </p>
+            </div>
+
+            <a href="/" class="inventory-link">
+                📦 Inventory
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- BILLING SECTION -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Create New Bill</h2>
+
+                    <p>
+                        Add products and quantities to the bill
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT INPUT -->
+
+            <div class="product-input">
+
+                <div class="form-group">
+
+                    <label for="productId">
+                        Product ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productId"
+                        placeholder="Example: P001"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="quantity">
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        min="1"
+                        placeholder="Enter quantity"
+                    >
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    id="addItemButton">
+
+                    + Add Item
+
+                </button>
+
+            </div>
+
+
+            <!-- BILL TABLE -->
+
+            <div class="bill-table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Product ID</th>
+
+                            <th>Product Name</th>
+
+                            <th>Price</th>
+
+                            <th>Quantity</th>
+
+                            <th>Total</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="billTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty-message">
+
+                                No products added to the bill.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="bill-summary">
+
+                <div>
+
+                    <span>Total Items</span>
+
+                    <strong id="totalItems">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="grand-total">
+
+                    <span>Grand Total</span>
+
+                    <strong>
+                        ₹<span id="grandTotal">0.00</span>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="bill-actions">
+
+                <button
+                    class="btn btn-secondary"
+                    id="clearBillButton">
+
+                    Clear Bill
+
+                </button>
+
+
+                <button
+                    class="btn btn-success"
+                    id="generateBillButton">
+
+                    🧾 Generate Bill
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- GENERATED BILL -->
+
+        <section
+            class="card receipt-card"
+            id="receiptSection"
+            style="display: none;">
+
+            <div id="receipt">
+
+                <div class="receipt-header">
+
+                    <h2>
+                        CLOUD INVENTORY
+                    </h2>
+
+                    <p>
+                        Inventory Management System
+                    </p>
+
+                    <hr>
+
+                    <h3>
+                        SALES BILL
+                    </h3>
+
+                </div>
+
+
+                <div class="receipt-info">
+
+                    <p>
+                        <strong>Bill ID:</strong>
+                        <span id="receiptBillId"></span>
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong>
+                        <span id="receiptDate"></span>
+                    </p>
+
+                </div>
+
+
+                <table class="receipt-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="receiptTableBody">
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="receipt-total">
+
+                    <strong>
+                        Grand Total:
+                    </strong>
+
+                    <strong>
+                        ₹<span id="receiptTotal">
+                            0.00
+                        </span>
+                    </strong>
+
+                </div>
+
+
+                <div class="thank-you">
+
+                    <p>
+                        Thank you for your purchase!
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="print-area">
+
+                <button
+                    class="btn btn-primary"
+                    onclick="window.print()">
+
+                    🖨️ Print Bill
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', filename='js/billing.js') }}">
+    </script>
+
+</body>
+
+</html>
